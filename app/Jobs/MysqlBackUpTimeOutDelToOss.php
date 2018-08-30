@@ -31,6 +31,6 @@ class MysqlBackUpTimeOutDelToOss implements ShouldQueue
     public function handle()
     {
         $oss = new Oss();
-        $oss->delete('backup/mysql/wanshuaba_20180830200001.sql');
+        $oss->delete('backup/mysql/wanshuaba_20180830220001.sql');
     }
 }
