@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\MysqlBackUpToOss;
+use App\Jobs\MysqlBackUpTimeOutDelToOss;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
     {
         //MySQL定时备份到阿里云OSS
         $schedule->job(new MysqlBackUpToOss())->hourly();
+        //删除阿里云OSS超时备份的MySQL
+        $schedule->job(new MysqlBackUpTimeOutDelToOss())->everyMinute();
     }
 
     /**
