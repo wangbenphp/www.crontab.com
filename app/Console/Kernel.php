@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //MySQL定时备份到阿里云OSS
-        $schedule->job(new MysqlBackUpToOss())->everyMinute();
+        $schedule->job(new MysqlBackUpToOss())->hourly();
     }
 
     /**
