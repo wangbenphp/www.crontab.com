@@ -36,9 +36,9 @@ class MysqlBackUpToOss implements ShouldQueue
         if ($fileList) {
             foreach ($fileList as $v) {
                 if ($v != '.' && $v != '..') {
-                    $res = $oss->upload($basePath . '/' . $v, 'backup/mysql/' . $v);
+                    $res = $oss->upload($basePath . $v, 'backup/mysql/' . $v);
                     if ($res['state']) {
-                        unlink($basePath . '/' . $v);
+                        unlink($basePath . $v);
                     }
                 }
             }
