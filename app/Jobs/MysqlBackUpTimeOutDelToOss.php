@@ -25,12 +25,12 @@ class MysqlBackUpTimeOutDelToOss implements ShouldQueue
 
     /**
      * Execute the job.
-     * 删除阿里云OSS备份的MySQL过期文件
+     * 删除阿里云OSS七天前备份的MySQL过期文件
      * @return void
      */
     public function handle()
     {
         $oss = new Oss();
-        $oss->delete('backup/mysql/wanshuaba_20180830220001.sql');
+        $oss->delete('backup/mysql/wanshuaba_' . date('YmdH', strtotime('-7 days')) . '.sql');
     }
 }
